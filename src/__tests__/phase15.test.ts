@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest'
 import { mount } from '@vue/test-utils'
-import { nextTick, defineComponent } from 'vue'
+import { nextTick } from 'vue'
 import { setActivePinia, createPinia, getActivePinia } from 'pinia'
 import { useSort } from '@/composables/useSort'
 import { useSearchOverlay } from '@/composables/useSearchOverlay'
@@ -17,7 +17,7 @@ beforeEach(() => {
   setActivePinia(createPinia())
 })
 
-// ── useSort ─────────────────────────────────────────────────────────────────
+// useSort
 
 describe('useSort', () => {
   it('default sort key is "rating" descending', () => {
@@ -78,7 +78,7 @@ describe('useSort', () => {
   })
 })
 
-// ── PlaceSortBar ─────────────────────────────────────────────────────────────
+// PlaceSortBar
 
 describe('PlaceSortBar', () => {
   it('renders 4 sort buttons', () => {
@@ -115,7 +115,7 @@ describe('PlaceSortBar', () => {
   })
 })
 
-// ── useSearchOverlay ─────────────────────────────────────────────────────────
+// useSearchOverlay
 
 describe('useSearchOverlay', () => {
   it('starts closed', () => {
@@ -148,7 +148,7 @@ describe('useSearchOverlay', () => {
   })
 })
 
-// ── SearchOverlay component ──────────────────────────────────────────────────
+// SearchOverlay component
 
 describe('SearchOverlay', () => {
   beforeEach(() => {

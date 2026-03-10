@@ -18,7 +18,7 @@ beforeEach(() => {
   setActivePinia(createPinia())
 })
 
-// ── useFilters ────────────────────────────────────────────────────────────────
+// useFilters
 
 describe('useFilters', () => {
   it('starts with no active filters', () => {
@@ -74,7 +74,7 @@ describe('useFilters', () => {
   })
 })
 
-// ── PlaceFilterPanel ──────────────────────────────────────────────────────────
+// PlaceFilterPanel
 
 describe('PlaceFilterPanel', () => {
   function mountPanel(isOpen = true) {
@@ -138,7 +138,7 @@ describe('PlaceFilterPanel', () => {
   })
 })
 
-// ── PlaceFilters (filter button) ──────────────────────────────────────────────
+// PlaceFilters (filter button)
 
 describe('PlaceFilters filter button', () => {
   it('renders filter icon button', () => {
@@ -171,7 +171,7 @@ describe('PlaceFilters filter button', () => {
   })
 })
 
-// ── vIntersection directive ───────────────────────────────────────────────────
+// vIntersection directive
 
 function makeIOClass(
   cb: { ref: IntersectionObserverCallback | null },
