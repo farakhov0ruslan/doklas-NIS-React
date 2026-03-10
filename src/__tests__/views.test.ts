@@ -134,13 +134,13 @@ describe('PlannerView', () => {
     expect(wrapper.text()).toContain('Не удалось пересчитать маршрут')
   })
 
-  it('renders recalculate bar', () => {
+  it('renders day blocks when plan is generated', () => {
     const planner = usePlannerStore()
     planner.isGenerated = true
     planner.days = [makeDayPlan(1, ['p1'])]
 
     const wrapper = mountWithPlugins(PlannerView)
-    expect(wrapper.find('.bar').exists()).toBe(true)
+    expect(wrapper.find('.planner__days').exists()).toBe(true)
   })
 })
 

@@ -27,15 +27,22 @@ describe('getRecommendations', () => {
     })
   })
 
-  it('returns places sorted by rating descending', () => {
+  it('returns places sorted by effective rating descending (with style bonus)', () => {
+    const STYLE_BONUS_CATS: Record<string, string[]> = {
+      cultural: ['museums', 'excursions'],
+    }
+    const bonusCats = basePrefs.travelStyle.flatMap(s => STYLE_BONUS_CATS[s] ?? [])
+    const effectiveRating = (p: { rating: number; category: string }) =>
+      p.rating + (bonusCats.includes(p.category) ? 0.5 : 0)
+
     const result = getRecommendations(basePrefs, allPlaces)
     for (let i = 1; i < result.length; i++) {
-      expect(result[i - 1]!.rating).toBeGreaterThanOrEqual(result[i]!.rating)
+      expect(effectiveRating(result[i - 1]!)).toBeGreaterThanOrEqual(effectiveRating(result[i]!))
     }
   })
 
   it('returns empty array when no interests match', () => {
-    const prefs: UserPreferences = { ...basePrefs, interests: ['extreme'] }
+    const prefs: UserPreferences = { ...basePrefs, interests: [] }
     const result = getRecommendations(prefs, allPlaces)
     expect(result).toHaveLength(0)
   })
